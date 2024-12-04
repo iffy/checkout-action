@@ -170,7 +170,9 @@ esac
 
 g git init
 
-g git remote add origin "${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}"
+if ! [ -d .git/refs/remotes/origin ]; then
+    g git remote add origin "${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}"
+fi
 
 g git config --local gc.auto 0
 
